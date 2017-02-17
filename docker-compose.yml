@@ -1,0 +1,73 @@
+version: '2.1'
+services:
+  mysql:
+    build: ./mysql 
+    #image: mysql
+    container_name: mysql
+    environment:
+      - WPDB=wordpress
+      - WPUSER=wpuser
+      - WPPASS=th1s1sp@ssw0rd
+  
+  downloader:
+    build: ./downloader
+    #image: downloader
+    container_name: downloader 
+    volumes:
+      - /var/www/app
+  
+  app1:
+    build: ./phpfpm
+    image: phpfpm
+    container_name: app1 
+    environment:
+      - DB_ENV_WPDB=wordpress
+      - DB_ENV_WPUSER=wpuser
+      - DB_ENV_WPPASS=th1s1sp@ssw0rd
+    links: 
+      - mysql:db
+    volumes_from:
+      - downloader
+#    depends_on:
+#      - mysql
+#      - downloader
+#      mysql:
+#       condtion: service_start
+#      downloader:
+#       condtion: service_start
+  
+  app2:
+    image: phpfpm
+    container_name: app2 
+    environment:
+      - DB_ENV_WPDB=wordpress
+      - DB_ENV_WPUSER=wpuser
+      - DB_ENV_WPPASS=th1s1sp@ssw0rd
+    links: 
+      - mysql:db
+    volumes_from:
+      - downloader
+#    depends_on:
+#      - mysql
+#      - app1
+#      mysql:
+#        condtion: service_start
+#      app1:
+#        condtion: service_start
+
+  nginx:
+    build: ./nginx
+    container_name: nginx 
+    volumes_from: 
+      - downloader
+    links:
+      - app1:app1
+      - app2:app2
+#    depends_on:
+#      - mysql
+#      - downloader
+#      - app1
+#      - app2
+    ports:
+      - "80:80"
+  

@@ -16,7 +16,7 @@ ADD startdb.sh /startdb.sh
 # Set the environment variables
 ENV WPDB wordpress
 ENV WPUSER wpuser
-ENV WPPASS random
+ENV WPPASS random 
 
 ENTRYPOINT [ "/bin/bash","/startdb.sh" ]
 
