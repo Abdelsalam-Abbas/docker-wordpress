@@ -8,3 +8,4 @@ start.sh will build and run 4 containers
 	|_2 phpfpm containers
 	|_nginx container for load balancing
 
+# git-docker-nginx-compose
