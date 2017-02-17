@@ -10,7 +10,7 @@ WORDPRESS_HOST=$DB_PORT_3306_TCP_ADDR
 if [ -z $WORDPRESS_HOST ] ## in case of using docker compose which will not import environment variables
 then
 	echo "getting ip of mysql contianer"
-	while  [[ ! $(ping -c mysql) ]] 
+	while  [[ ! $(ping -c 1  mysql) ]] 
 	do 
 		echo "mysql server is not up yet. waiting..."
 	        sleep 1
