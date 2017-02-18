@@ -37,9 +37,9 @@ services:
     environment:
 ############  user,password and database name for wordpress ##############
 ##################  change them thorught .env file   #####################
-      - DB_ENV_WPDB="${WORDPRESS_DATABASE}"
-      - DB_ENV_WPUSER="${WORDPRESS_USER}"
-      - DB_ENV_WPPASS="${WORDPRESS_PASSWORD}"
+      - DB_ENV_WPDB=${WORDPRESS_DATABASE}
+      - DB_ENV_WPUSER=${WORDPRESS_USER}
+      - DB_ENV_WPPASS=${WORDPRESS_PASSWORD}
     links: 
       - mysql:db
     volumes_from:

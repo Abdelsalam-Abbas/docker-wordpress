@@ -16,7 +16,7 @@ then
 	        sleep 1
 	done
 	WORDPRESS_HOST=$(getent hosts mysql | awk '{ print $1}') 
-	echo "ip add is $WORDPRESS_HOST"
+	echo "Database ip add is $WORDPRESS_HOST"
 fi
 
 echo 'Check for the wp-config.php'
