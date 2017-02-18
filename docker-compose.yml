@@ -5,10 +5,10 @@ services:
     container_name: mysql
     environment:
 ############  user,password and database name for wordpress ##############
-############  if you are planning to cahnge it make sure to change it at both of app1 and app2 ##########
-      - WPDB=wordpress
-      - WPUSER=wpuser
-      - WPPASS=th1s1sp@ssw0rd 
+##################  change them thorught .env file   #####################
+      - WPDB=${WORDPRESS_DATABASE}
+      - WPUSER=${WORDPRESS_USER}
+      - WPPASS=${WORDPRESS_PASSWORD}
   
   downloader:
     build: ./downloader
@@ -22,9 +22,10 @@ services:
     container_name: app1 
     environment:
 ############  user,password and database name for wordpress ##############
-      - DB_ENV_WPDB=wordpress
-      - DB_ENV_WPUSER=wpuser
-      - DB_ENV_WPPASS=th1s1sp@ssw0rd 
+##################  change them thorught .env file   #####################
+      - DB_ENV_WPDB=${WORDPRESS_DATABASE}
+      - DB_ENV_WPUSER=${WORDPRESS_USER}
+      - DB_ENV_WPPASS=${WORDPRESS_PASSWORD}
     links: 
       - mysql:db
     volumes_from:
@@ -35,9 +36,10 @@ services:
     container_name: app2 
     environment:
 ############  user,password and database name for wordpress ##############
-      - DB_ENV_WPDB=wordpress
-      - DB_ENV_WPUSER=wpuser
-      - DB_ENV_WPPASS=th1s1sp@ssw0rd 
+##################  change them thorught .env file   #####################
+      - DB_ENV_WPDB="${WORDPRESS_DATABASE}"
+      - DB_ENV_WPUSER="${WORDPRESS_USER}"
+      - DB_ENV_WPPASS="${WORDPRESS_PASSWORD}"
     links: 
       - mysql:db
     volumes_from:
