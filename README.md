@@ -8,4 +8,4 @@ this is a course project to create a wordpress web stack using 4 containers:-
 
 using docker-compose to build and start the 4 containers.
 
-**course: Introductoin into docker by @github/galal-hussein at Information Technology Institute (ITI) Alexandria**
+**course: Introductoin into docker by @galal-hussein at Information Technology Institute (ITI) Alexandria**
